@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/inscription.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/toggle.css') }}">
+
+
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<div class="menu">
+	<h1>Inscription</h1>
+
+	{{ form_errors(registrationForm) }}
+
+{{ form_start(registrationForm) }}
+<div class="form-grid">
+    <div class="form-group">
+        <label for="{{ registrationForm.prenom.vars.id }}">Prénom :</label>
+        {{ form_widget(registrationForm.prenom) }}
+    </div>
+    <div class="form-group">
+        <label for="{{ registrationForm.nom.vars.id }}">Nom :</label>
+        {{ form_widget(registrationForm.nom) }}
+    </div>
+    <div class="form-group">
+        <label for="{{ registrationForm.adresse.vars.id }}">Adresse postale :</label>
+        {{ form_widget(registrationForm.adresse) }}
+        <div id="address-suggestions"></div>
+    </div>
+    <div class="form-group">
+        <label for="{{ registrationForm.email.vars.id }}">Email :</label>
+        {{ form_widget(registrationForm.email) }}
+    </div>
+    <div class="form-group">
+        <label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe :</label>
+        {{ form_widget(registrationForm.plainPassword) }}
+    </div>
+    <div class="form-group">
+        <label for="{{ registrationForm.agreeTerms.vars.id }}">Accepter les conditions :</label>
+        {{ form_widget(registrationForm.agreeTerms) }}
+    </div>
+</div>
+		<button type="submit" class="btn">S'inscrire</button>
+	{{ form_end(registrationForm) }}
+	</div>
+
+	
+	<script>
+		const addressInput = document.querySelector('.autocomplete-address');
+		const suggestionsDiv = document.getElementById('address-suggestions');
+
+		addressInput.addEventListener('input', async (event) => {
+			const term = event.target.value;
+
+			// Envoyer une requête AJAX pour obtenir des suggestions d'adresse
+			const response = await fetch(`/autocomplete-address?term=${term}`);
+			const data = await response.json();
+
+			// Afficher les suggestions dans la div address-suggestions
+			suggestionsDiv.innerHTML = '';
+
+			
+
+			if (data.length > 0) {
+				data.forEach((address) => {
+					const suggestionElement = document.createElement('div');
+					suggestionElement.textContent = address;
+					suggestionsDiv.appendChild(suggestionElement);
+				});
+				
+			// Ajoutez un gestionnaire d'événement de clic aux suggestions
+			suggestionsDiv.addEventListener('click', function (event) {
+				if (event.target.tagName === 'DIV') {
+					const selectedAddress = event.target.textContent;
+					addressInput.value = selectedAddress;
+					suggestionsDiv.innerHTML = ''; // Effacez les suggestions une fois la sélection faite
+				}
+			});
+			}
+		});
+	</script>
+{% endblock %}

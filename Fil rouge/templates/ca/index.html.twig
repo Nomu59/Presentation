@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CAController!{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('/css/ca.css') }}">
+<div class="form">
+    {{ form_start(form) }}
+    
+    {{ form_row(form.dateEntree, {
+        'label': 'Date Debut'|trans,
+    }) }}
+    
+    {{ form_row(form.dateSortie, {
+        'label': 'Date Fin'|trans,
+    }) }}
+    
+    {{ form_row(form.submit) }}
+</div>
+
+<div class="canva">
+  <canvas id="myChart"></canvas>
+</div>
+ <p>
+ Total: {{total}}€
+ <p/>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Suite Royale', 'Suite Princière', 'Premium'],
+      datasets: [{
+        label: '# of Votes',
+        data: [{{CAT1}}, {{CAT2}}, {{CAT3}}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+{% endblock %}

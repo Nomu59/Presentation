@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" type="image/png" href="{{ asset('images/Logo.png') }}">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet"> {% block stylesheets %}{% endblock %}{% block javascripts %}{% endblock %}
+		<link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/toggle.css') }}">
+
+	</head>
+        {% block header %}
+        <header>
+        <div class="liens">
+            <a href="{{ path('app_discovery') }}">Découvrez</a>
+            <a href="{{ path('app_reservation') }}">Réservez</a>
+        </div>
+        <div class="logo">
+            <a href="{{ path('app_home') }}"><img  src="{{ asset('images/Logo.png') }}" alt="Logo"/></a>
+        </div>    
+        <div class="liens">
+        {% if app.user %}
+            <a href="{{ path('app_profile') }}">Profil</a>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('app_register') }}">Inscription</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
+    </div>
+    </header>
+        {% endblock %}
+	<body>
+		{% block body %}
+		
+
+
+		{% endblock %}
+	</body>
+    {% block footer %}
+    	<footer class="footer">
+        <div class="logo2">
+            
+        <img class="logo2bis" src="{{ asset('images/Logo.png') }}" alt="logo2">
+
+    </div>
+    <div class="adresse">
+        <a href="https://www.google.com/maps?q=17+Boulevard+Albert+1er,+98000+Monaco"><p> Royal Palace <br>17 Boulevard Albert 1er <br>98000 Monaco</p></a>
+    </div>
+    <div class="partenaire">
+        <h3>PARTENAIRE OFFICIEL</h3>
+        <a href="https://www.monacograndprixticket.com"><img class="grandprix" src="{{ asset('images/festivals_grand_prix_de_monaco_-_formule_1_26022020102047-PhotoRoom.png-PhotoRoom.png') }}" alt=""></a>
+    </div>
+    <div class="apropos">
+        <p class="propos">A propos</p>
+        <ul>
+            <li><a href="{{ path('app_cgu') }}">CGU</a></li>
+            <li><a href="{{ path('app_contact') }}">Nous Contacter</a></li>
+            <li><a href="{{ path('app_politique_confidentialite') }}">Politique de Confidentialité</a></li>
+            <li><a href="{{ path('app_mentions_legales') }}">Mentions Légales</a></li>
+        </ul>
+    </div>
+    <div class="networks">
+        <p>Suivez nous sur :</p>
+        <a class="network" href="https://twitter.com/"><img class="icon" src="{{ asset('images/Twitter-Download-PNG 2.png') }}" alt="">Twitter</a>
+        <a class="network" href="https://instagram.com/"><img class="icon" src="{{ asset('images/2048px-Instagram_icon 2.png') }}" alt="">Instagram</a>
+        <a class="network" href="https://Linkedin.com/"><img class="icon" src="{{ asset('images/LinkedIn_icon 2.svg.png') }}" alt="">LinkedIn</a>
+        <a class="network" href="https://facebook.com/"><img class="icon" src="{{ asset('images/Facebook 2.svg.png') }}" alt="">Facebook</a>
+    </div>
+    </footer>
+{% endblock %}
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

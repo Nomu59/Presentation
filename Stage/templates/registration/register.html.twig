@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<style>
+   .blocFormulaireInscription {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-image: url('assets/images/background_register2.jpg'); 
+        background-size: cover;
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+    }
+
+    /* Conteneur du formulaire d'inscription */
+    .formulaire_Inscription {
+        background-color: #fff;
+        border: 1px solid #e0b973;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        padding: 20px;
+    }
+
+    /* Styles communs pour les sections d'inscription et de connexion */
+    .blocInscriptionConnexion {
+        display: flex;
+        border: 2px solid #000;
+        background-color: #000;
+    }
+
+    /* Styles spécifiques pour les sections d'inscription et de connexion */
+    .blocInscription, .blocConnexion {
+        flex: 1;
+        color: #fff;
+        padding: 20px;
+        border: 3px solid #e0b973;
+    }
+
+    /* Styles pour les titres de section */
+    .blocInscription h4, .blocConnexion h4 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    /* Styles pour le formulaire */
+    .form {
+        padding: 20px;
+        color: #333;
+    }
+
+    /* Styles pour les champs de formulaire */
+    .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #e0b973;
+        border-radius: 5px;
+    }
+
+    /* Styles pour le bouton d'inscription */
+    .boutonInscription {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #btnInscription {
+        background-color: #e0b973;
+        color: #000;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="blocFormulaireInscription">
+
+    <div class='formulaire_Inscription'>
+
+
+        <div class="blocInscriptionConnexion">
+
+            <div class="blocInscription">
+
+                <h4><a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">INSCRIPTION</a>
+                </h4>
+
+            </div>
+
+            <div class="blocConnexion">
+
+                <h4><a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">CONNEXION</a></h4>
+
+            </div>
+
+        </div>
+
+        <div class="form">
+            {{ form_start(RegistrationFormType) }}
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.lastname, 'Nom', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.firstname, 'Prénom', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.firstname, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.birthday, 'Date de naissance', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.birthday, {'attr': {'class': 'form-control', 'placeholder': 'JJ/MM/AAAA'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.email, 'Email', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.address, 'Adresse', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.address, {'attr': {'class': 'form-control', 'placeholder': 'Votre adresse'}}) }}
+                     {{ form_errors(RegistrationFormType.address) }}
+            <ul id="liste_adresse"></ul>
+            </div>
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.telephone, 'Téléphone', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Votre téléphone'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.password, 'Mot de passe', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.password, {'attr': {'class': 'form-control', 'placeholder': 'Votre mot de passe'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(RegistrationFormType.Conditions, 'Accepter les conditions', {'attr': {'class': 'form-label'}}) }}
+                {{ form_widget(RegistrationFormType.Conditions, {'attr': {'class': 'form-check-input'}}) }}
+            </div>
+            <div class="boutonInscription">
+                <button type="submit" id="btnInscription">INSCRIPTION</button>
+            </div>
+            {{ form_end(RegistrationFormType) }}
+        </div>
+    </div>
+</div>
+
+
+<script src="{{asset('assets/js/suggestionAdresse.js')}}"></script>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('/css/profile/profile.css') }}">
+
+
+<div class="menu">
+<p class="welcome">Bienvenue {{user.prenom}} sur votre profil</p>
+<br/>
+<a class="link" href="{{path('app_profile_reservations')}}">Mes reservations</a>
+<br/>
+<div class="spacer"></div>
+<a class="link" href="{{path('app_profile_infos')}}">Mes infos perso</a>
+<br/>
+<div class="spacer"></div>
+<a class="link" href="{{path('app_profile_edit')}}">Parametre du compte</a>
+<br/>
+<div class="spacer"></div>
+{% if admin %}
+<a class="link" href="{{path('app_admin')}}">Panel admin</a>
+<br/>
+<div class="spacer"></div>
+{% endif %}
+</div>
+{% endblock %}

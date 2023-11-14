@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('/css/paiement.css') }}">
+
+	<div class="menu">
+
+	<h1>Paiement</h1>
+	<div class="label">
+	{{ form_start(form) }}
+	{{ form_row(form.field_name) }}
+	{{ form_row(form.numbers) }}
+	{{ form_row(form.validite) }}
+	{{ form_row(form.ccv) }}
+	<br/>
+	{{ form_row(form.submit) }}
+	{{ form_end(form) }}
+	</div>
+	<div class="prix">
+	<p>Prix:
+		{{price}} €
+	</p>
+	</div>
+	</div>
+
+
+{% endblock %}

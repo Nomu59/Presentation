@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('/css/profile/profileinfo.css') }}">
+	<div class="menu">
+
+		<h1>Mes informations</h1>
+
+		Nom:
+		{{user.nom}}
+		<br/>
+		Prenom:
+		{{user.prenom}}
+		<br/>
+		Email:
+		{{user.email}}
+		<br/>
+		Adresse:
+		{{user.adresse}}
+		<br/>
+		<a class="list" href="{{ path('app_profile_edit') }}">Modifier mon profil</a>
+	</div>
+{% endblock %}

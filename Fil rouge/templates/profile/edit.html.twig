@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paramètre du compte{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/profile/edit.css') }}">
+<div class="menu">
+    <h1>Paramètre du compte</h1>
+
+    {{ include('profile/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a class="list" href="{{ path('app_profile') }}">Retour</a>
+</div>
+{% endblock %}

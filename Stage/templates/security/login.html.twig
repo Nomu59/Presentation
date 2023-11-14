@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-4">Connexion</h1>
+
+        <form action="{{ path('app_login') }}" method="post">
+            <div class="form-group">
+                <label for="email" class="mt-4">Adresse email</label>
+                <input type="email" placeholder="exemple@beguide.fr">
+            </div>
+            <div class="form-group">
+                <label for="password" class="mt-4">Mot de passe</label>
+                <input type="password" placeholder="********">
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Se connecter</button>
+        </form>
+
+        <p class="mt-4">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">S'inscrire</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact!{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    <h1 class="h1">Contactez-nous</h1>
+    <div class="form">
+    {{form_start(formulaire)}}
+    {{ form_widget(formulaire.email, {'attr': {'class': 'email', 'placeholder': 'Adresse email'} }) }}
+    {{ form_widget(formulaire.content, {'attr': {'class': 'email', 'placeholder': 'Contenu'} }) }}
+    {{ form_widget(formulaire.envoyer, {'attr': {'class': 'envoyer'}}) }}
+    {{form_end(formulaire)}}
+    </div>
+  
+{% endblock %}

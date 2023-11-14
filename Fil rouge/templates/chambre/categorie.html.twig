@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories
+{% endblock %}
+
+{% block body %}
+	<link rel="stylesheet" href="{{ asset('/css/chambre/chambreCategory.css') }}">
+<div class="categorie">
+<h1>Choisissez une catégorie</h1>
+<a class="link" href="{{path('app_chambre_index', {'id': 1})}}">Suite Royale</a>
+<div class="spacer"></div>
+</br>
+<a class="link" href="{{path('app_chambre_index', {'id': 2})}}">Suite Princière</a>
+<div class="spacer"></div>
+</br>
+<a class="link" href="{{path('app_chambre_index', {'id': 3})}}">Suite Premium</a>
+<div class="spacer"></div>
+</br>
+	<a class="btn6" href="{{ path('app_home') }}">Retour à l'Accueil</a>
+</div>
+{% endblock %}

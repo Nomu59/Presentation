@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes réservations
+{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/profile/reservation.css') }}">
+
+    <div class="menu">
+    <h2>Mes réservations :</h2>
+
+{% if reservations %}
+
+    {% for i, reservation in reservations %}
+        <hr/>
+        <div class="reservation-item">
+            Chambre numéro: {{ reservation.chambre.id }}<br>
+            Entrée: {{ dateEntree[i] }}<br>
+            Sortie: {{ dateSortie[i] }}<br>
+            Prix: {{ reservation.prix }}<br>
+        </div>
+            <a class="bttn" href="{{ path('app_profile_reservations_edit', {'id': reservation.id}) }}">Modifier ma réservation</a>
+        
+    {% endfor %}
+    
+    {% else %}
+    <div class="reservation-item">
+        <p>Aucune reservation disponible</p>
+        </br>
+        <a class="bttn" href="{{ path('app_reservation')}}">Reserver une chambre</a>
+    </div>
+{% endif %}
+</div>
+{% endblock %}
